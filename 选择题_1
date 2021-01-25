@@ -1,0 +1,174 @@
+1.下面哪个是python中的不变的数据结构().
+A.set
+B.list
+C.tuple
+D.dict
+
+正确答案：C string int float tuple boolen 不可变  
+          list dict 和set为可变
+
+2.下列代码的输出为：
+str1 = "Hello,Python";
+ str2 = "Python";
+ print(str1.index(str2));
+ 
+正确答案：6 
+index()方法语法：
+str.index(str, beg=0, end=len(string))
+参数：
+str -- 指定检索的字符串
+beg -- 开始索引，默认为0。
+end -- 结束索引，默认为字符串的长度。
+
+3.下面代码运行后，a、b、c、d四个变量的值，描述错误的是？ 
+import copy
+a = [1, 2, 3, 4, ['a', 'b']] 
+b = a 
+c = copy.copy(a) 
+d = copy.deepcopy(a) 
+a.append(5) 
+a[4].append('c') 
+
+A.a ==  [1,2, 3, 4, ['a', 'b', 'c'], 5]
+B.b ==  [1,2, 3, 4, ['a', 'b', 'c'], 5]
+C.c ==  [1,2, 3, 4, ['a', 'b', 'c']]
+D.d ==  [1,2, 3, 4, ['a', 'b', ‘c’]]
+
+正确答案：D 考察：赋值、深拷贝、浅拷贝
+1.对象的赋值 
+都是进行对象引用（内存地址）传递，即‘’ b is a‘’ ，a 变 b 也变
+2.浅拷贝
+会创建一个新的对象,即 “c is not a” ，但是，对于对象中的元素，浅拷贝就只会使用原始元素的引用（内存地址），也就是说”c[i] is a[i]”
+当我们使用下面的操作的时候，会产生浅拷贝的效果：
+使用切片[:]操作
+使用工厂函数（如list/dir/set）
+使用copy模块中的copy()函数
+3.深拷贝 
+会创建一个新的对象，即”d is not a” ，并且 对于对象中的元素，深拷贝都会重新生成一份（有特殊情况，下面会说明），而不是简单的使用原始元素的引用（内存地址）
+拷贝的特殊情况
+其实，对于拷贝有一些特殊情况：
+对于非容器类型（如数字、字符串、和其他’原子’类型的对象）没有拷贝这一说
+如果元祖变量只包含原子类型对象，则不能深拷贝
+
+4.下述字符串格式化语法正确的是?()
+A.'GNU's Not %d %%'  % 'UNIX'
+B.'GNU\'s Not %d %%'  % 'UNIX'
+C.'GNU's Not %s %%'   % 'UNIX'
+D.'GNU\'s Not %s %%'  % 'UNIX'
+
+正确答案：D python里面%d表数字，%s表示字符串，%%表示一个%；
+单引号内嵌套单引号需要转义字符/;单引号内嵌套双引号不需要嵌套；
+双引号内嵌套双引号需要转义字符/；双引号内引用单引号不需要转义字符；
+
+5.下列程序运行结果为：
+a=[1, 2, 3, 4, 5]
+sums = sum(map(lambda x: x + 3, a[1::3]))
+print(sums)
+
+A.10
+B.13
+C.15
+D.17
+
+正确答案：B 运行a[1::3]，从index=1开始，步幅为3，到一个新的数组b，b=[2,5]；
+运行map(lambda x: x + 3, b)，数组b中每个元素加3，又得到一个新的数组c，c=[5,8]；
+运行sums = sum(c)，求和得到sums=13；
+因此选B。
+map()函数
+map()是 Python 内置的高阶函数，它接收一个函数 f 和一个 list，并通过把函数 f 依次作用在 list 的每个元素上，得到一个新的 list 并返回。
+例如，对于list [1, 2, 3, 4, 5, 6, 7, 8, 9]
+如果希望把list的每个元素都作平方，就可以用map()函数：
+
+
+6.已知print_func.py的代码如下：
+print('Hello
+World!')
+print('__name__
+value: ', __name__)
+ 
+def main():
+   
+print('This message is from main function')
+ 
+if __name__ ==
+'__main__':
+   
+main()
+ 
+print_module.py的代码如下：
+import print_func
+print("Done!")
+运行print_module.py程序，结果是：（）
+
+A.Hello World!  __name__ value: print_func  Done!
+B.Hello World!  __name__ value: print_module  Done!
+C.Hello World!  __name__ value: __main__  Done!
+D.Hello World!  __name__ value:  Done!
+
+正确答案：A 当运行模块的时候，__name__等于“__main__”；如果import到其他模块中，则__name__等于模块名称（不包含后缀.py）
+当print_func作为模块导入的时候不会执行main函数，其__name__的值为模块名：print_func。
+因此会打印出print_func.
+
+7.对于以下代码，描述正确的是：
+list = ['1', '2', '3', '4', '5']
+print list[10:]
+
+A.导致 IndexError
+B.输出['1', '2', '3', '4', '5']
+C.编译错误
+D.输出[]
+
+正确答案：D 切片不受内建类型的限制
+
+8.下列程序打印结果为（      ）
+import re 
+str1 = "Python's features" 
+str2 = re.match( r'(.*)on(.*?) .*', str1, re.M|re.I)
+print str2.group(1)
+
+A.Python
+B.Pyth
+C.thon’s
+D.Python‘s features
+
+正确答案：B 
+re模块实现正则的功能 
+re.match(正则表达式,要匹配的字符串，[匹配模式])
+要匹配的字符串为str1 = "Python's features" 
+正则表达式r'(.*)on(.*?) .*'
+r表示后面的字符串是一个普通字符串（比如\n会译为\和n，而不是换行符）
+()符号包住的数据为要提取的数据，通常与.group()函数连用。
+.匹配单个任意字符
+*匹配前一个字符出现0次或无限次
+?匹配前一个字符出现0次或1次
+(.*)提取的数据为str1字符串中on左边的所有字符，即Pyth
+(.*?)提取的数据为str1中on右边，空格前面，即's
+.group(0)输出的是匹配正则表达式整体结果
+.group(1) 列出第一个括号匹配部分，.group(2) 列出第二个括号匹配部分
+
+
+str1 = "Python's features"
+r'(.*)on(.*?) .*'
+有几个()就有几个group
+group(0) = group() = Python's features 
+第一个()=group(1)
+第二个()=group(2)
+.*适配所有
+?到后面的空格为止
+
+9.Python中函数是对象，描述正确的是? ()
+A.函数可以赋值给一个变量
+B.函数可以作为元素添加到集合对象中
+C.函数可以作为参数值传递给其它函数
+D.函数可以当做函数的返回值
+
+正确答案：A B C D python中一切皆对象
+
+10.解释语言的特性是什么？（）
+A.非独立
+B.效率低
+C.独立
+D.效率高性
+
+正确答案：A B
+
